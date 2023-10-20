@@ -533,6 +533,11 @@ func (l *Locale) Country() string {
 	return ""
 }
 
+// Returns country ISO code as normalized string.
+func (l *Locale) ISO() string {
+	return strings.ToLower(string(*l))
+}
+
 // Safely cast string type ISO code to Locale type.
 // If casting failed, en empty (zero value) Locale and error reurned.
 func Make(isoCode string) (Locale, error) {
