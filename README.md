@@ -26,7 +26,7 @@ ok := other.IsValid() // false
 
 ```go
 iso, err := locales.Make(" cA") // normalize and cast to LocaleCA
-if err != nil {
+if err == nil {
     ok := iso.IsValid() // true
     cname := iso.Country() // "Canada"
 }
