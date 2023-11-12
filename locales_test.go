@@ -43,4 +43,12 @@ func TestMake(t *testing.T) {
 	if err == nil {
 		t.Error("Invalid ISO code should return an error")
 	}
+	us, err := locales.Make("en-US,en;q=0.5")
+	if err != nil || us.ISO() != "us" {
+		t.Error("`en-US,en;q=0.5` should be US")
+	}
+	ch, err := locales.Make("fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5")
+	if err != nil || ch.ISO() != "ch" {
+		t.Error("`fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5` should be CH")
+	}
 }
