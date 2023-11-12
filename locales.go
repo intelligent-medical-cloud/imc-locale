@@ -550,11 +550,11 @@ func Make(isoCode string) (Locale, error) {
 		return locale, nil
 	}
 	parts := strings.Split(isoCode, ",")
-	tag, err := language.Parse(parts[0])
+	reg, err := language.ParseRegion(parts[0])
 	if err != nil {
 		return "", err
 	}
-	locale = Locale(tag.String())
+	locale = Locale(reg.String())
 	if locale.IsValid() {
 		return locale, nil
 	}
