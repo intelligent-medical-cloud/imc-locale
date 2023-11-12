@@ -549,7 +549,8 @@ func Make(isoCode string) (Locale, error) {
 	if locale.IsValid() {
 		return locale, nil
 	}
-	tag, err := language.Parse(isoCode)
+	parts := strings.Split(isoCode, ",")
+	tag, err := language.Parse(parts[0])
 	if err != nil {
 		return "", err
 	}
