@@ -4,6 +4,8 @@ package locales
 import (
 	"errors"
 	"strings"
+
+	"golang.org/x/text/language"
 )
 
 type Locale string
@@ -544,6 +546,14 @@ func Make(isoCode string) (Locale, error) {
 	isoCode = strings.TrimSpace(isoCode)
 	isoCode = strings.ToUpper(isoCode)
 	locale := Locale(isoCode)
+	if locale.IsValid() {
+		return locale, nil
+	}
+	tag, err := language.Parse(isoCode)
+	if err != nil {
+		return "", err
+	}
+	locale = Locale(tag.String())
 	if locale.IsValid() {
 		return locale, nil
 	}
