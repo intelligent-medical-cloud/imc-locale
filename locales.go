@@ -522,6 +522,7 @@ func (l *Locale) IsValid() bool {
 			return true
 		}
 	}
+
 	return false
 }
 
@@ -533,11 +534,17 @@ func (l *Locale) Country() string {
 	} else if *l == LocaleWildcard {
 		return "Global"
 	}
+
 	return ""
 }
 
-// Returns country ISO code as normalized string.
-func (l *Locale) ISO() string {
+// Returns country ISO code as normalized uppercase string.
+func (l *Locale) ISOUppercase() string {
+	return strings.ToUpper(string(*l))
+}
+
+// Returns country ISO code as normalized lowercase string.
+func (l *Locale) ISOLowercase() string {
 	return strings.ToLower(string(*l))
 }
 
@@ -546,19 +553,23 @@ func (l *Locale) ISO() string {
 func Make(isoCode string) (Locale, error) {
 	isoCode = strings.TrimSpace(isoCode)
 	isoCode = strings.ToUpper(isoCode)
+
 	locale := Locale(isoCode)
 	if locale.IsValid() {
 		return locale, nil
 	}
+
 	parts := strings.Split(isoCode, ",")
 	tag, err := language.Parse(parts[0])
 	if err != nil {
 		return "", err
 	}
+
 	reg, _ := tag.Region()
 	locale = Locale(reg.String())
 	if locale.IsValid() {
 		return locale, nil
 	}
+
 	return "", errors.New("invalid ISO code")
 }
