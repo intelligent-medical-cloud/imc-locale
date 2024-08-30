@@ -3,7 +3,7 @@ package locales_test
 import (
 	"testing"
 
-	locales "github.com/iMed-Cloud-Services-Inc/imedcs-locale"
+	locales "github.com/intelligent-medical-cloud/imc-locale"
 )
 
 func TestIsValid(t *testing.T) {

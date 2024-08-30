@@ -4,13 +4,13 @@
 #### Installation
 
 ```sh
-go get github.com/iMed-Cloud-Services-Inc/imedcs-locale
+go get github.com/intelligent-medical-cloud/imc-locale
 ```
 
 #### Examples
 
 ```go
-import locales "github.com/iMed-Cloud-Services-Inc/imedcs-locale"
+import locales "github.com/intelligent-medical-cloud/imc-locale"
 ```
 
 ```go
