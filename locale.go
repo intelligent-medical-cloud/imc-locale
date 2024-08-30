@@ -516,9 +516,9 @@ var caountriesMap = map[Locale]string{
 }
 
 // Check if such ISO country code exists.
-func (l *Locale) IsValid() bool {
+func (l Locale) IsValid() bool {
 	for k := range caountriesMap {
-		if k == *l {
+		if k == l {
 			return true
 		}
 	}
@@ -527,11 +527,11 @@ func (l *Locale) IsValid() bool {
 }
 
 // Returns country name for the ISO code.
-func (l *Locale) Country() string {
-	c, ok := caountriesMap[*l]
+func (l Locale) Country() string {
+	c, ok := caountriesMap[l]
 	if ok {
 		return c
-	} else if *l == LocaleWildcard {
+	} else if l == LocaleWildcard {
 		return "Global"
 	}
 
@@ -539,13 +539,13 @@ func (l *Locale) Country() string {
 }
 
 // Returns country ISO code as normalized uppercase string.
-func (l *Locale) ISOUppercase() string {
-	return strings.ToUpper(string(*l))
+func (l Locale) ISOUppercase() string {
+	return strings.ToUpper(string(l))
 }
 
 // Returns country ISO code as normalized lowercase string.
-func (l *Locale) ISOLowercase() string {
-	return strings.ToLower(string(*l))
+func (l Locale) ISOLowercase() string {
+	return strings.ToLower(string(l))
 }
 
 // Safely cast string type ISO code to Locale type.
