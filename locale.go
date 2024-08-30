@@ -1,5 +1,5 @@
 // Country names and ISO codes kit.
-package locales
+package locale
 
 import (
 	"errors"

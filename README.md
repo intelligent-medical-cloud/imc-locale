@@ -10,22 +10,22 @@ go get github.com/intelligent-medical-cloud/imc-locale
 #### Examples
 
 ```go
-import locales "github.com/intelligent-medical-cloud/imc-locale"
+import "github.com/intelligent-medical-cloud/imc-locale"
 ```
 
 ```go
-us := locales.LocaleUS
+us := locale.LocaleUS
 ok := us.IsValid() // true
 cname := us.Country() // "United States"
 ```
 
 ```go
-other := locales.Locale("XYZ")
+other := locale.Locale("XYZ")
 ok := other.IsValid() // false
 ```
 
 ```go
-iso, err := locales.Make(" cA") // normalize and cast to LocaleCA
+iso, err := locale.Make(" cA") // normalize and cast to LocaleCA
 if err == nil {
     ok := iso.IsValid() // true
     cname := iso.Country() // "Canada"
