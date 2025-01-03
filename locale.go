@@ -263,7 +263,7 @@ const (
 	LocaleZW       Locale = "ZW"
 )
 
-var caountriesMap = map[Locale]string{
+var countriesMap = map[Locale]string{
 	LocaleAD:       "Andorra",
 	LocaleAE:       "United Arab Emirates",
 	LocaleAF:       "Afghanistan",
@@ -517,7 +517,7 @@ var caountriesMap = map[Locale]string{
 
 // Check if such ISO country code exists.
 func (l Locale) IsValid() bool {
-	for k := range caountriesMap {
+	for k := range countriesMap {
 		if k == l {
 			return true
 		}
@@ -528,7 +528,7 @@ func (l Locale) IsValid() bool {
 
 // Returns country name for the ISO code.
 func (l Locale) Country() string {
-	c, ok := caountriesMap[l]
+	c, ok := countriesMap[l]
 	if ok {
 		return c
 	} else if l == LocaleWildcard {
